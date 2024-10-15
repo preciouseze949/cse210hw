@@ -1,34 +1,34 @@
 public class Product
 {
-    private string name;
-    private string productId;
-    private double price;
-    private int quantity;
+    private string _name;
+    private string _productId;
+    private double _price;
+    private int _quantity;
 
-    // Constructor
+    // Constructor to initialize product details
     public Product(string name, string productId, double price, int quantity)
     {
-        this.name = name;
-        this.productId = productId;
-        this.price = price;
-        this.quantity = quantity;
+        _name = name;
+        _productId = productId;
+        _price = price;
+        _quantity = quantity;
     }
 
-    // Method to calculate total cost of the product
+    // Method to calculate the total cost of this product
     public double GetTotalCost()
     {
-        return price * quantity;
+        return _price * _quantity;
     }
 
     // Getter for product name
     public string GetName()
     {
-        return name;
+        return _name;
     }
 
     // Getter for product ID
     public string GetProductId()
     {
-        return productId;
+        return _productId;
     }
 }

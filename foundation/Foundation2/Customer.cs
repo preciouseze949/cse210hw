@@ -1,24 +1,24 @@
 public class Customer
 {
-    private string name;
-    private Address address;
+    private string _name;
+    private Address _address;
 
-    // Constructor
+    // Constructor to initialize customer details
     public Customer(string name, Address address)
     {
-        this.name = name;
-        this.address = address;
+        _name = name;
+        _address = address;
     }
 
-    // Method to check if customer is in the USA
+    // Method to check if the customer lives in the USA
     public bool IsInUSA()
     {
-        return address.IsInUSA();
+        return _address.IsInUSA();
     }
 
-    // Method to return customer details (for shipping label)
+    // Method to return customer details for the shipping label
     public string GetCustomerDetails()
     {
-        return $"{name}\n{address.GetFullAddress()}";
+        return $"{_name}\n{_address.GetFullAddress()}";
     }
 }

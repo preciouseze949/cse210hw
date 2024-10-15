@@ -1,54 +1,55 @@
-using System;
 using System.Collections.Generic;
 
 public class Order
 {
-    private List<Product> products;
-    private Customer customer;
+    private List<Product> _products;
+    private Customer _customer;
 
-    // Constructor
+    // Constructor to initialize the order with a customer
     public Order(Customer customer)
     {
-        this.customer = customer;
-        products = new List<Product>();
+        _customer = customer;
+        _products = new List<Product>();  // Initialize an empty list of products
     }
 
-    // Method to add product to the order
+    // Method to add a product to the order
     public void AddProduct(Product product)
     {
-        products.Add(product);
+        _products.Add(product);
     }
 
-    // Method to calculate total cost of the order (including shipping)
+    // Method to calculate the total cost of the order, including shipping
     public double GetTotalCost()
     {
         double totalCost = 0;
-        foreach (var product in products)
+        
+        // Calculate the total cost of all products
+        foreach (var product in _products)
         {
             totalCost += product.GetTotalCost();
         }
-        
-        // Add shipping cost based on customer location
-        double shippingCost = customer.IsInUSA() ? 5 : 35;
+
+        // Add the shipping cost based on customer's location
+        double shippingCost = _customer.IsInUSA() ? 5 : 35;
         totalCost += shippingCost;
 
         return totalCost;
     }
 
-    // Method to get the packing label
+    // Method to return the packing label for the order
     public string GetPackingLabel()
     {
         string label = "Packing Label:\n";
-        foreach (var product in products)
+        foreach (var product in _products)
         {
             label += $"- {product.GetName()} (ID: {product.GetProductId()})\n";
         }
         return label;
     }
 
-    // Method to get the shipping label
+    // Method to return the shipping label for the order
     public string GetShippingLabel()
     {
-        return $"Shipping Label:\n{customer.GetCustomerDetails()}";
+        return $"Shipping Label:\n{_customer.GetCustomerDetails()}";
     }
 }
