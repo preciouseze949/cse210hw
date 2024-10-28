@@ -1,0 +1,2 @@
+TotalScore|0
+SimpleGoal|running|running every morning|20|False
